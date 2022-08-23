@@ -5,5 +5,10 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
+  const fieldsArray = [...fields];
+  const newObj = Object.fromEntries(
+    fieldsArray.filter((key) => key in obj).map((key) => [key, obj[key]])
+  );
 
+  return newObj;
 };
